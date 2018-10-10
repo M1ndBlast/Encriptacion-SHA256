@@ -1,13 +1,21 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
+const Cryptos = require('../modules/Cryptos')
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-router.get('/encriptacion' () =>
+router.get('/', (req, res, next) =>
 {
+  res.render('index', { title: 'Express' })
+})
+
+router.post('/encriptando', () =>
+{
+    let usu = req.body.user,
+        pass = req.body.pass,
+        msg = req.body.text,
+        tipo = req.body.tipo == 0 ? Cryptos.algorthim.AES128 : req.body.tipo == 1 ? Cryptos.algorthim.AES192 : Cryptos.algorthim.AES256
+
+    let msgCry = Cryptos.crypt(msg, pass, algorthim)
+
     var con = mysql.createConnection(
     {
         host: "1192.168.21.36",
@@ -18,13 +26,24 @@ router.get('/encriptacion' () =>
 
     con.connect(function(err)
     {
-        if (err) throw err;
-        con.query("SELECT * FROM customers", function (err, result, fields)
+        if (err) throw err
+        con.query("insert into usuario values (0, ?, ?)", [usu, pass],function (err, result)
         {
-            if (err) throw err;
-            console.log(result);
-        });
-    });
+            if (err) throw err
+            console.log('registro del usuario completada')
+            con.query("insert into reporte values (0, ?, ?, ?)", [usu, msgCry, tipo],function (err, result)
+            {
+                if (err) throw err
+                console.log('registro guardado')
+                res.redirect('/message')
+            })
+        })
+    })
 })
 
-module.exports = router;
+router.get('/message', (req, res) =>
+{
+    res.render('message')
+})
+
+module.exports = router
