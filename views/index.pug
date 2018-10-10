@@ -1,5 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    h1 ¿Que Deseas hacer?
+    .flex
+        .half
+            a(href='/crypt')
+                p Encriptar
+        .half
+            a(href='/reports')
+                p Desencriptar
+  
