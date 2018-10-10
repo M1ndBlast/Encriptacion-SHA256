@@ -13,9 +13,9 @@ var dbconfig =
 var con = mysql.createConnection(dbconfig.connection)
 con.query('USE ' + dbconfig.database)
 
-module.exports = (crud) =>
+var crud =
 {
-    crud.registrar((usu, pass, msgCry, nTipo, cb) =>
+    registrar: (usu, pass, msgCry, nTipo, cb) =>
     {
         con.query("insert into usuario values (0, ?, ?)", [usu, pass], function (err, result)
         {
@@ -35,5 +35,8 @@ module.exports = (crud) =>
             })
 
         })
-    })
+    }
 }
+
+
+module.exports = crud

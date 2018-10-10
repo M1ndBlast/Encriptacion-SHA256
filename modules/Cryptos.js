@@ -71,8 +71,8 @@ console.log('jala x4')
     {
         if (key.length % multiply == 0) return key
         else
-        {
             for (var i = key.length; key.length % multiply != 0; i++)
+            {
                 key += Cryptos.randomChar()
             return key
         }
