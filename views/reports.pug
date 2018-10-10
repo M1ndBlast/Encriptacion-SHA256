@@ -1,9 +1,13 @@
 extends layout
 
 append content
-    form(method='post' action='/')
-        input(type='text' name='user' placeholder='Escribe tu usuario' max-length='20' required)
-        input(type='text' name='admi' placeholder='Nombre admin' max-length='32' required)
-        input(type='text' name='report' placeholder='Reporte' max-length='100' required)
-        input(type='text' name='pass' placeholder='Password' max-length='60' required)
-        input(type='submit' value='Mostrar mensaje')
+    form(method='post', action='/')
+        p= usuario
+        p= admin
+        p= reporte
+        p= mensaje
+        input(type='text', name='pass', placeholder='Password', max-length='60', required)
+        input(type='submit', value='Mostrar mensaje')
+          
+        button(type="button", onclick="") Anterior Mensaje  
+        button(type="button", onclick="") Siguiente Mensaje    

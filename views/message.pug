@@ -1,7 +1,7 @@
 extends layout
 
 append content
-    form(id="registro",method='post' ,action='/')
+    form(id="registro",method='post' ,action='/encriptando')
         input(type='text', name='user', placeholder='Escribe tu usuario', max-length='20', required)
         input(type='text', name='pass', placeholder='Llave', max-length='32', required)
         input(type='text', name='text', placeholder='Texto', max-length='500', required)
