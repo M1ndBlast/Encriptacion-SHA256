@@ -15,7 +15,7 @@ var Cryptos =
         else
         {
             let bytes = algorthim == 'aes128'? 16 : algorthim == 'aes196'? 24 : 32,
-                iv = crypto.pseudoRandomBytes (16)
+                iv = 'Nonosmatesjimmyp'
 
             console.log('> Original es:')
             console.log(text)
@@ -48,7 +48,7 @@ var Cryptos =
             let tempEncrypted = Cryptos.bufferize(encrypted)
 
             let bytes = algorthim == 'aes128'? 16 : algorthim == 'aes196'? 24 : 32,
-                iv = tempEncrypted.slice(0, 16),
+                iv = 'Nonosmatesjimmyp',
                 textEncrypted = tempEncrypted.slice(16)
 
             key = Cryptos.setAutoPadding(key, bytes)
