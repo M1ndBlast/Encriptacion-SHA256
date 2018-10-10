@@ -5,16 +5,16 @@ var Cryptos =
     algorthim:
     {
         AES128: 'aes128',
-        AES196: 'aes196',
+        AES192: 'aes192',
         AES256: 'aes256'
     },
 
     crypt: (text, key, algorthim) =>
     {
-        if (algorthim != 'aes128' && algorthim != 'aes196' && algorthim != 'aes256') return null
+        if (algorthim != Cryptos.algorthim.AES128 && algorthim != Cryptos.algorthim.AES192 && algorthim != Cryptos.algorthim.AES256) return null
         else
         {
-            let bytes = algorthim == 'aes128'? 16 : algorthim == 'aes196'? 24 : 32,
+            let bytes = algorthim == 'aes128'? 16 : algorthim == 'aes192'? 24 : 32,
                 iv = 'Nonosmatesjimmyp'
 
             console.log('> Original es:')
@@ -38,7 +38,7 @@ var Cryptos =
 
     decrypt: (encrypted, key, algorthim) =>
     {
-        if (algorthim != 'aes128' && algorthim != 'aes196' && algorthim != 'aes256') return null
+        if (algorthim != Cryptos.algorthim.AES128 && algorthim != Cryptos.algorthim.AES192 && algorthim != Cryptos.algorthim.AES256) return null
         else
         {
             console.log('> Encriptado es 1:')
@@ -47,7 +47,7 @@ var Cryptos =
 
             let tempEncrypted = Cryptos.bufferize(encrypted)
 
-            let bytes = algorthim == 'aes128'? 16 : algorthim == 'aes196'? 24 : 32,
+            let bytes = algorthim == 'aes128'? 16 : algorthim == 'aes192'? 24 : 32,
                 iv = 'Nonosmatesjimmyp',
                 textEncrypted = tempEncrypted.slice(16)
 
@@ -72,7 +72,6 @@ console.log('jala x4')
         if (key.length % multiply == 0) return key
         else
         {
-            console.log('no es multiplo la llave mandada')
             for (var i = key.length; key.length % multiply != 0; i++)
                 key += Cryptos.randomChar()
             return key
