@@ -47,9 +47,7 @@ var crud =
             console.log('imprimiendo consulta')
             console.log(result)
             console.log('ejecutando cb')
-            cb()
-            console.log('mandando consulta')
-            return result
+            cb(result)
         })
     }
 }

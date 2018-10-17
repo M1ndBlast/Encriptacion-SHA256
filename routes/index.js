@@ -32,11 +32,14 @@ router.get('/desencriptando', (req, res) =>
         nTipo = req.body.tipo,
         tipo = req.body.tipo == 0 ? Cryptos.algorthim.AES128 : req.body.tipo == 1 ? Cryptos.algorthim.AES192 : Cryptos.algorthim.AES256
         console.log('llego aqui xD')
-    var arreglo = crud.consultar((cb) =>
+
+    crud.consultar((results) =>
     {
-        console.log('imprimiendo arreglo')
-        console.log(arreglo)
+        console.log('imprimiendo result de col 0 en callback')
+        console.log(results[0].cue_rep)
+
     })
+
 })
 
 router.get('/message', (req, res) =>
@@ -50,3 +53,8 @@ router.get('/reports', (req, res) =>
 })
 
 module.exports = router
+
+function encriptar()
+{
+
+}
