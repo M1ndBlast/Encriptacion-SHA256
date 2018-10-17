@@ -3,11 +3,9 @@ extends layout
 append content
     form(method='post', action='/')
         p= usuario
-        p= admin
         p= reporte
+        p= admin
         p= mensaje
+        
         input(type='text', name='pass', placeholder='Password', max-length='60', required)
-        input(type='submit', value='Mostrar mensaje')
-          
-        button(type="button", onclick="") Anterior Mensaje  
-        button(type="button", onclick="") Siguiente Mensaje    
+        input(type='submit', value='Mostrar mensaje')   

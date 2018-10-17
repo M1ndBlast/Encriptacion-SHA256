@@ -91,62 +91,62 @@ var Cryptos =
             let keyto = crypto.createHash('sha256').update(String(key)).digest('base64').substr(0, 16);
 
             console.log('> Original es:')
-            console.log(text)
+            console.log(encrypted)
             console.log('\n')
             /*
             key = Cryptos.setAutoPadding(key, bytes)*/
 
-            const cipher = crypto.createDescipheriv(algorthim, keyto, iv)
+            const cipher = crypto.createDecipheriv(algorthim, keyto, iv)
 
-            let encrypted = cipher.update(text, 'hex', 'utf8')
-            encrypted += cipher.final('utf8')
+            let decrypted = cipher.update(encrypted, 'hex', 'utf8')
+            decrypted += cipher.final('utf8')
 
             console.log('> Descriptado es:')
-            console.log(Desencrypted)
+            console.log(decrypted)
             console.log('\n')
 
-            return encrypted
+            return decrypted
           }
           if(algorthim = Cryptos.algorthim.AES192){
             let  iv = 'Nonosmatesjimmyp'
             let keyto = crypto.createHash('sha256').update(String(key)).digest('base64').substr(0, 24);
 
             console.log('> Original es:')
-            console.log(text)
+            console.log(encrypted)
             console.log('\n')
             /*
             key = Cryptos.setAutoPadding(key, bytes)*/
 
-            const cipher = crypto.createDescipheriv(algorthim, keyto, iv)
+            const cipher = crypto.createDecipheriv(algorthim, keyto, iv)
 
-            let encrypted = cipher.update(text, 'hex', 'utf8')
-            encrypted += cipher.final('utf8')
+            let decrypted = cipher.update(encrypted, 'hex', 'utf8')
+            decrypted += cipher.final('utf8')
 
             console.log('> Descriptado es:')
-            console.log(Desencrypted)
+            console.log(decrypted)
             console.log('\n')
 
-            return encrypted
+            return decrypted
           }else{
             let  iv = 'Nonosmatesjimmyp'
             let keyto = crypto.createHash('sha256').update(String(key)).digest('base64').substr(0, 32);
 
             console.log('> Original es:')
-            console.log(text)
+            console.log(encrypted)
             console.log('\n')
             /*
             key = Cryptos.setAutoPadding(key, bytes)*/
 
-            const cipher = crypto.createDescipheriv(algorthim, keyto, iv)
+            const cipher = crypto.createDecipheriv(algorthim, keyto, iv)
 
-            let encrypted = cipher.update(text, 'hex', 'utf8')
-            encrypted += cipher.final('utf8')
+            let decrypted = cipher.update(encrypted, 'hex', 'utf8')
+            decrypted += cipher.final('utf8')
 
             console.log('> Descriptado es:')
-            console.log(Desencrypted)
+            console.log(decrypted)
             console.log('\n')
 
-            return encrypted
+            return decrypted
           }
 
 
