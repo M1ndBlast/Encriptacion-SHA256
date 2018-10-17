@@ -37,12 +37,19 @@ var crud =
         })
     },
 
-    consultar: () =>
+    consultar: (cb) =>
     {
+        console.log('empezando consulta')
         con.query('select id_rep, nom_usu, cue_rep, cif_rep from reporte natural join usuario', (err, result) =>
         {
+            console.log('terminando consulta')
             if (err) throw err
+            console.log('imprimiendo consulta')
             console.log(result)
+            console.log('ejecutando cb')
+            cb()
+            console.log('mandando consulta')
+            return result
         })
     }
 }
