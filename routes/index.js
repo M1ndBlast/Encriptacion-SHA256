@@ -33,12 +33,14 @@ router.get('/desencriptando', (req, res) =>
         tipo = req.body.tipo == 0 ? Cryptos.algorthim.AES128 : req.body.tipo == 1 ? Cryptos.algorthim.AES192 : Cryptos.algorthim.AES256
         console.log('llego aqui xD')
 
+    var mensajes
     crud.consultar((results) =>
     {
         console.log('imprimiendo result de col 0 en callback')
-        console.log(results[0].cue_rep)
-
+        console.log(results)
+        mensajes = results
     })
+    // el resto del codigo
 
 })
 
