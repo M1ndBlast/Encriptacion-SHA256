@@ -21,12 +21,12 @@ var crud =
         {
             if (err) throw err
             console.log('registro del usuario completada')
-            con.query("select id_usu from usuario where nom_usu = ? and pass_usu = ?", [usu, pass],function (err, result1)
+            con.query("select id_usu from usuario where nom_usu = ? and pass_usu = ?", [usu, pass], (err, result1) =>
             {
                 if (err) throw err
                 let idusu = result1[0].id_usu
                 console.log('consulta realizada')
-                con.query("insert into reporte values (0, ?, ?, ?)", [idusu, msgCry, nTipo],function (err, result2)
+                con.query("insert into reporte values (0, ?, ?, ?)", [idusu, msgCry, nTipo], (err, result2) =>
                 {
                     if (err) throw err
                     console.log('registro guardado')
@@ -34,6 +34,15 @@ var crud =
                 })
             })
 
+        })
+    },
+
+    consultar: () =>
+    {
+        con.query('select id_rep, nom_usu, cue_rep, cif_rep from reporte natural join usuario', (err, result) =>
+        {
+            if (err) throw err
+            console.log(result)
         })
     }
 }
