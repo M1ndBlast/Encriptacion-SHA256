@@ -14,14 +14,19 @@ var Cryptos =
         if (algorthim != Cryptos.algorthim.AES128 && algorthim != Cryptos.algorthim.AES192 && algorthim != Cryptos.algorthim.AES256) return null
         else
         {
+            if(algorthim = Cryptos.algorthim.AES128){
+
+            }
+
             let bytes = algorthim == 'aes128'? 16 : algorthim == 'aes192'? 24 : 32,
                 iv = 'Nonosmatesjimmyp'
+            let keyto = crypto.createHash('sha256').update(String(key)).digest('base64').substr(0, bytes);
 
             console.log('> Original es:')
             console.log(text)
             console.log('\n')
-
-            key = Cryptos.setAutoPadding(key, bytes)
+            /*
+            key = Cryptos.setAutoPadding(key, bytes)*/
 
             const cipher = crypto.createCipheriv(algorthim, key, iv)
 
