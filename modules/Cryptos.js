@@ -15,29 +15,69 @@ var Cryptos =
         else
         {
             if(algorthim = Cryptos.algorthim.AES128){
+              let  iv = 'Nonosmatesjimmyp'
+              let keyto = crypto.createHash('sha256').update(String(key)).digest('base64').substr(0, 16);
 
+              console.log('> Original es:')
+              console.log(text)
+              console.log('\n')
+              /*
+              key = Cryptos.setAutoPadding(key, bytes)*/
+
+              const cipher = crypto.createCipheriv(algorthim, keyto, iv)
+
+              let encrypted = cipher.update(text, 'utf8', 'hex')
+              encrypted += cipher.final('hex')
+
+              console.log('> Encriptado es:')
+              console.log(encrypted)
+              console.log('\n')
+
+              return encrypted
+            }
+            if(algorthim = Cryptos.algorthim.AES192){
+              let  iv = 'Nonosmatesjimmyp'
+              let keyto = crypto.createHash('sha256').update(String(key)).digest('base64').substr(0, 24);
+
+              console.log('> Original es:')
+              console.log(text)
+              console.log('\n')
+              /*
+              key = Cryptos.setAutoPadding(key, bytes)*/
+
+              const cipher = crypto.createCipheriv(algorthim, keyto, iv)
+
+              let encrypted = cipher.update(text, 'utf8', 'hex')
+              encrypted += cipher.final('hex')
+
+              console.log('> Encriptado es:')
+              console.log(encrypted)
+              console.log('\n')
+
+              return encrypted
+            }else{
+              let  iv = 'Nonosmatesjimmyp'
+              let keyto = crypto.createHash('sha256').update(String(key)).digest('base64').substr(0, 32);
+
+              console.log('> Original es:')
+              console.log(text)
+              console.log('\n')
+              /*
+              key = Cryptos.setAutoPadding(key, bytes)*/
+
+              const cipher = crypto.createCipheriv(algorthim, keyto, iv)
+
+              let encrypted = cipher.update(text, 'utf8', 'hex')
+              encrypted += cipher.final('hex')
+
+              console.log('> Encriptado es:')
+              console.log(encrypted)
+              console.log('\n')
+
+              return encrypted
             }
 
-            let bytes = algorthim == 'aes128'? 16 : algorthim == 'aes192'? 24 : 32,
-                iv = 'Nonosmatesjimmyp'
-            let keyto = crypto.createHash('sha256').update(String(key)).digest('base64').substr(0, bytes);
 
-            console.log('> Original es:')
-            console.log(text)
-            console.log('\n')
-            /*
-            key = Cryptos.setAutoPadding(key, bytes)*/
-
-            const cipher = crypto.createCipheriv(algorthim, key, iv)
-
-            let encrypted = cipher.update(text, 'utf8', 'hex')
-            encrypted += cipher.final('hex')
-
-            console.log('> Encriptado es:')
-            console.log(encrypted)
-            console.log('\n')
-
-            return encrypted
         }
     },
 
@@ -56,8 +96,7 @@ var Cryptos =
                 iv = 'Nonosmatesjimmyp',
                 textEncrypted = tempEncrypted.slice(16)
 
-            key = Cryptos.setAutoPadding(key, bytes)
-            const decipher = crypto.createDecipheriv(algorthim, key, iv)
+            const decipher = crypto.createDecipheriv(algorthim, keyto, iv)
 
             let decrypted = decipher.update(textEncrypted, 'hex', 'utf8')
 console.log('jala x3')
